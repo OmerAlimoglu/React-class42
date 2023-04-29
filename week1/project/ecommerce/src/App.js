@@ -1,23 +1,22 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import Categories from "./categories.js";
-import Products from "./products.js";
+import Categories from "./components/categories";
+import Products from "./components/products";
 
 function App() {
-  const [selectedCategoryId, setSelectedCategoryId] = useState(null);
-
-  const handleSelectCategory = (categoryId) => {
-    setSelectedCategoryId(categoryId);
-  };
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  function handleSelectCategory(e) {
+    const selectedCategory = e.target.textContent;
+    console.log("aaa", selectedCategory);
+    setSelectedCategory(selectedCategory);
+  }
 
   return (
     <div className="App">
       <header className="App-header">
         <h1>Products</h1>
-        <img src={logo} className="App-logo" alt="logo" />
-        <Categories onSelectCategory={handleSelectCategory} />
-        {selectedCategoryId && <Products categoryId={selectedCategoryId} />}
+        <Categories handleSelectCategory={handleSelectCategory} />
+        <Products products={selectedCategory} />
       </header>
     </div>
   );
