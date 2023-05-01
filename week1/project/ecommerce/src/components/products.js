@@ -3,14 +3,11 @@ import allProducts from "../fake-data/all-products.js";
 import "./Product.css";
 
 const Products = ({ category }) => {
-  const products = allProducts.filter((product) => {
-    const categoryName = product.category.replace("FAKE: ", "");
-    return product.category === categoryName;
-  });
+  const products = allProducts;
 
   return (
     <div className="products">
-      {category === allProducts.category
+      {category === null
         ? products.map((product) => {
             return (
               <li className="product" key={product.id}>
@@ -20,7 +17,10 @@ const Products = ({ category }) => {
             );
           })
         : products
-            .filter((product) => category === product.category)
+            .filter((product) => {
+              const categoryName = category.replace("FAKE: ", "");
+              return product.category === categoryName;
+            })
             .map((product) => {
               return (
                 <li className="product" key={product.id}>

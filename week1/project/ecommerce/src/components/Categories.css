@@ -21,6 +21,8 @@
     background-color: rgb(209,209,213);
 }
 
+
+.categories button:focus,
 .categories button:active {
     background-color: rgb(189,189,193);
 }

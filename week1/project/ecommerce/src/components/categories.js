@@ -3,8 +3,15 @@ import allCategories from "../fake-data/all-categories.js";
 import "./Categories.css";
 
 const Categories = ({ handleSelectCategory }) => {
-  const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   const categories = allCategories;
+
+  // in order to make the user see the selected category
+  const [selectedCategoryId, setSelectedCategoryId] = useState(-1);
+
+  const handleCategoryClick = (index) => {
+    setSelectedCategoryId(index);
+    handleSelectCategory(index);
+  };
 
   return (
     <div className="categories">
@@ -12,10 +19,9 @@ const Categories = ({ handleSelectCategory }) => {
         <button
           key={index}
           onClick={(index) => {
-            setSelectedCategoryId(index);
-            handleSelectCategory(index);
+            handleCategoryClick(index);
           }}
-          // className={selectedCategoryId === index ? "active" : ""}
+          className={selectedCategoryId === index ? "active" : ""}
         >
           {category}
         </button>

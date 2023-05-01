@@ -7,7 +7,6 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   function handleSelectCategory(e) {
     const selectedCategory = e.target.textContent;
-    console.log("aaa", selectedCategory);
     setSelectedCategory(selectedCategory);
   }
 
@@ -16,7 +15,7 @@ function App() {
       <header className="App-header">
         <h1>Products</h1>
         <Categories handleSelectCategory={handleSelectCategory} />
-        <Products products={selectedCategory} />
+        <Products category={selectedCategory} />
       </header>
     </div>
   );
