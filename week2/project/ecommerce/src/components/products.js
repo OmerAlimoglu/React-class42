@@ -1,34 +1,25 @@
-import React from "react";
-import allProducts from "../fake-data/all-products.js";
+import React, { useState, useEffect } from "react";
 import "./Product.css";
 
-const Products = ({ category }) => {
-  const products = allProducts;
+const Products = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products")
+      .then((response) => response.json())
+      .then((products) => setProducts(products));
+  }, []);
 
   return (
     <div className="products">
-      {category === null
-        ? products.map((product) => {
-            return (
-              <li className="product" key={product.id}>
-                <img src={product.image} alt={product.title} />
-                <h3>{product.title}</h3>
-              </li>
-            );
-          })
-        : products
-            .filter((product) => {
-              const categoryName = category.replace("FAKE: ", "");
-              return product.category === categoryName;
-            })
-            .map((product) => {
-              return (
-                <li className="product" key={product.id}>
-                  <img src={product.image} alt={product.title} />
-                  <h3>{product.title}</h3>
-                </li>
-              );
-            })}
+      {products.map((item) => {
+        return (
+          <div key={item.id} className="product">
+            <img src={item.image} alt={item.title} />
+            <h3>{item.title}</h3>
+          </div>
+        );
+      })}
     </div>
   );
 };

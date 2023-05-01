@@ -2,14 +2,18 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     margin: 5rem auto;
-}
-
-.product {
     margin: 1rem;
     list-style-type: none;
 }
 
+.product {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .product img {
-    width: 70%;
-    height: 70%;
+    align-self: center;
+    width: 60%;
+    height: 60%;
 }
