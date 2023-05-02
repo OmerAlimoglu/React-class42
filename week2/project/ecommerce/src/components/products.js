@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Product.css";
 
-const Products = () => {
+const Products = ({ category }) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -12,14 +12,28 @@ const Products = () => {
 
   return (
     <div className="products">
-      {products.map((item) => {
-        return (
-          <div key={item.id} className="product">
-            <img src={item.image} alt={item.title} />
-            <h3>{item.title}</h3>
-          </div>
-        );
-      })}
+      {category === null
+        ? products.map((product) => {
+            return (
+              <div key={product.id} className="product">
+                <img src={product.image} alt={product.title} />
+                <h3>{product.title}</h3>
+              </div>
+            );
+          })
+        : products
+            .filter((product) => {
+              const categoryName = category.replace("FAKE: ", "");
+              return product.category === categoryName;
+            })
+            .map((product) => {
+              return (
+                <div key={product.id} className="product">
+                  <img src={product.image} alt={product.title} />
+                  <h3>{product.title}</h3>
+                </div>
+              );
+            })}
     </div>
   );
 };
