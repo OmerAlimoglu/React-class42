@@ -17,3 +17,7 @@
     width: 60%;
     height: 60%;
 }
+
+.loading {
+    align-self: center;
+}

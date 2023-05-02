@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./App.css";
 import Categories from "./components/categories";
 import Products from "./components/products";
+import ProductCard from "./components/ProductCard";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   const [categoryName, setCategoryName] = useState(null);
@@ -11,13 +13,15 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Products</h1>
+    <BrowserRouter>
+      <div className="App">
         <Categories handleCategoryChange={handleCategoryChange} />
-        <Products categoryName={categoryName} />
-      </header>
-    </div>
+        <Routes>
+          <Route path="/" element={<Products categoryName={categoryName} />} />
+          <Route path="/product/:id" element={<ProductCard />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
