@@ -4,18 +4,18 @@ import Categories from "./components/categories";
 import Products from "./components/products";
 
 function App() {
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  function handleSelectCategory(e) {
-    const selectedCategory = e.target.textContent;
-    setSelectedCategory(selectedCategory);
-  }
+  const [categoryName, setCategoryName] = useState(null);
+
+  const handleCategoryChange = (categoryName) => {
+    setCategoryName(categoryName);
+  };
 
   return (
     <div className="App">
       <header className="App-header">
         <h1>Products</h1>
-        <Categories handleSelectCategory={handleSelectCategory} />
-        <Products category={selectedCategory} />
+        <Categories handleCategoryChange={handleCategoryChange} />
+        <Products categoryName={categoryName} />
       </header>
     </div>
   );

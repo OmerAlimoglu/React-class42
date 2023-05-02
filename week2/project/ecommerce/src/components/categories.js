@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Categories.css";
 
-const Categories = ({ handleSelectCategory }) => {
+const Categories = ({ handleCategoryChange }) => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -14,7 +14,8 @@ const Categories = ({ handleSelectCategory }) => {
 
   const handleCategoryClick = (index) => {
     setSelectedCategoryId(index);
-    handleSelectCategory(index);
+    const categoryName = categories[index];
+    handleCategoryChange(categoryName);
   };
 
   return (
@@ -22,8 +23,9 @@ const Categories = ({ handleSelectCategory }) => {
       {categories.map((category, index) => (
         <button
           key={index}
-          onClick={(index) => {
-            handleCategoryClick(index);
+          value={index}
+          onClick={(e) => {
+            handleCategoryClick(e.target.value);
           }}
           className={selectedCategoryId === index ? "active" : ""}
         >
