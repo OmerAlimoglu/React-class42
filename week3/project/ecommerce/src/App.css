@@ -1,0 +1,15 @@
+.App {
+  background-color: white;
+  text-align: center;
+}
+
+.App-header h1 {
+  text-align: start;
+  font-size: 40px;
+}
+
+.loading {
+  align-self: center;
+}
+
+
