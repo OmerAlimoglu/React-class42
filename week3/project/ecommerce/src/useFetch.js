@@ -1,4 +1,4 @@
-// I used this site to create a custom hook in order to fetch API data
+// I used this site (`https://dev.to/techcheck/custom-react-hook-usefetch-eid`) to create a custom hook in order to fetch API data
 // but I got errors and managed to fix it adding cleanup function
 //that cancels the request if the component is unmounted.. (thanks chatGPT :) )
 import { useState, useEffect } from "react";

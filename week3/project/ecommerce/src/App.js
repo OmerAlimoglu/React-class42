@@ -3,24 +3,53 @@ import "./App.css";
 import Categories from "./components/categories";
 import Products from "./components/products";
 import ProductCard from "./components/ProductCard";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Favorites from "./components/Favorites";
+import { FavoritesProvider } from "./components/FavoritesContext";
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 
 function App() {
   const [categoryName, setCategoryName] = useState(null);
+  const [allProducts, setAllProducts] = useState([]);
 
   const handleCategoryChange = (categoryName) => {
     setCategoryName(categoryName);
   };
 
+  const handleProductsChange = (products) => {
+    setAllProducts(products);
+  };
+
   return (
     <BrowserRouter>
-      <div className="App">
-        <Categories handleCategoryChange={handleCategoryChange} />
-        <Routes>
-          <Route path="/" element={<Products categoryName={categoryName} />} />
-          <Route path="/product/:id" element={<ProductCard />} />
-        </Routes>
-      </div>
+      <FavoritesProvider allProducts={allProducts}>
+        <div className="App">
+          <nav>
+            <NavLink to="/">
+              <span>Products</span>
+            </NavLink>
+            <NavLink to="/favorites">
+              <span>Favorites</span>
+            </NavLink>
+          </nav>
+          <Categories handleCategoryChange={handleCategoryChange} />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Products
+                  categoryName={categoryName}
+                  onProductsChange={handleProductsChange}
+                />
+              }
+            />
+            <Route path="/product/:id" element={<ProductCard />} />
+            <Route
+              path="/favorites"
+              element={<Favorites allProducts={allProducts} />}
+            />
+          </Routes>
+        </div>
+      </FavoritesProvider>
     </BrowserRouter>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./ProductCard.css";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 const ProductCard = () => {
   const { id } = useParams();
@@ -38,6 +38,7 @@ const ProductCard = () => {
           <div className="product-text">
             <h3>{product.title}</h3>
             <p>{product.description}</p>
+            <Link to="/">Back to all products</Link>
           </div>
         </div>
       )}
