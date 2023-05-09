@@ -3,10 +3,26 @@
   text-align: center;
 }
 
-.App-header h1 {
+.App h1 {
   text-align: start;
   font-size: 40px;
+  margin: 2rem;
 }
+
+.navbar {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  margin: 2rem;
+}
+
+.navbar span {
+  padding: 1rem;
+  font-size: 18px;
+  justify-self: end;
+}
+
+
 
 .loading {
   align-self: center;

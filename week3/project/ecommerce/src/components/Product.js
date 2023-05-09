@@ -9,7 +9,6 @@ const Product = ({ id, image, title }) => {
 
   const handleFavoriteToggle = (e) => {
     e.preventDefault();
-    console.log("work, work, work,...");
     toggleFavorite(id);
   };
 

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import Product from "./Product";
 import useFetch from "../useFetch.js";
+import "./favorites.css";
 import { FavoritesContext } from "./FavoritesContext";
 
 const Favorites = () => {
@@ -23,12 +24,14 @@ const Favorites = () => {
     favorites.includes(product.id)
   );
   return (
-    <div>
-      <h2>Your Favorites</h2>
-      {favoriteProducts.map(({ id, image, title }) => (
-        <Product key={id} id={id} image={image} title={title} />
-      ))}
-    </div>
+    <>
+      <h2 className="favorites-head">Your Favorites</h2>
+      <div className="favorites">
+        {favoriteProducts.map(({ id, image, title }) => (
+          <Product key={id} id={id} image={image} title={title} />
+        ))}
+      </div>
+    </>
   );
 };
 

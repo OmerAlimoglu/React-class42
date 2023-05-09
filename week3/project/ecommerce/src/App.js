@@ -23,7 +23,9 @@ function App() {
     <BrowserRouter>
       <FavoritesProvider allProducts={allProducts}>
         <div className="App">
-          <nav>
+          <h1>Products</h1>
+          <nav className="navbar">
+            <Categories handleCategoryChange={handleCategoryChange} />
             <NavLink to="/">
               <span>Products</span>
             </NavLink>
@@ -31,7 +33,6 @@ function App() {
               <span>Favorites</span>
             </NavLink>
           </nav>
-          <Categories handleCategoryChange={handleCategoryChange} />
           <Routes>
             <Route
               path="/"
